@@ -6,6 +6,85 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>30 Days of React Challenge</title>
+  <style>
+    /* == General style === */
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
+
+    html,
+    body {
+      height: 100%;
+      line-height: 1.5;
+      font-family: 'Montserrat';
+      font-weight: 300;
+      color: black;
+    }
+
+    .root {
+      min-height: 100%;
+      position: relative;
+    }
+
+    .header-wrapper,
+    .main-wrapper,
+    .footer-wrapper {
+      width: 85%;
+      margin: auto;
+    }
+
+    .header-wrapper,
+    .main-wrapper {
+      padding: 10px;
+      margin: 2px auto;
+    }
+
+    h1 {
+      font-size: 70px;
+      font-weight: 300;
+    }
+
+    h2,
+    h3 {
+      font-weight: 300;
+    }
+
+    header {
+      background-color: #61dbfb;
+      padding: 10px;
+    }
+
+    main {
+      padding: 10px;
+      padding-bottom: 60px;
+      /* Height of the footer */
+    }
+
+    ul {
+      margin-left: 15px;
+    }
+
+    ul li {
+      list-style: none;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 60px;
+      /* Height of the footer */
+      background: #6cf;
+    }
+
+    .footer-wrapper {
+      font-weight: 400;
+      text-align: center;
+      line-height: 60px;
+    }
+  </style>
 </head>
 
 <body>
@@ -16,54 +95,79 @@
   <script type="text/babel">
     const rootElement = document.querySelector('.root')
 
-    const headerStyles = {
-      backgroundColor: '#61DBFB',
-      fontFamily: 'Helvetica Neue',
-      padding: 25,
-      lineHeight: 1.5,
+    const welcome = 'Welcome to 30 Days Of React'
+    const title = 'Getting Started React'
+    const subtitle = 'JavaScript Library'
+    const author = {
+      firstName: 'Alex',
+      lastName: 'Chiu'
     }
+    const date = 'Feb 7, 2023'
 
     const header = (
-      <header
-        style={headerStyles}
-      >
-        <div>
-          <h1>Welcome to 30 Days of React</h1>
-          <h2>Getting Started with React</h2>
-          <h3>JavaScript Library</h3>
-          <p>Alex Chiu</p>
-          <small>Feb 7 2023</small>
+      <header>
+        <div className="header-wrapper">
+          <h1>{welcome}</h1>
+          <h2>{title}</h2>
+          <h3>{subtitle}</h3>
+          <p>By: {author.firstName} {author.lastName}</p>
+          <small>Date: {date}</small>
         </div>
       </header>
     )
 
-    const mainStyles = {
-      backgroundColor: '#F3F0F5',
-    }
+    const numOne = 3
+    const numTwo = 2
+
+    const result = (
+      <p>
+        {numOne} + {numTwo} = {numOne + numTwo}
+      </p>
+    )
+
+    const yearBorn = 1988
+    const currentYear = new Date().getFullYear()
+    const age = currentYear - yearBorn
+    const personAge = (
+      <p>
+        {' '}
+        {author.firstName} {author.lastName} is {age} years old
+      </p>
+    )
+
+    const techs = ['HTML', 'CSS', 'JavaScript']
+    const techsFormatted = techs.map((tech) => <li key={tech}>{tech}</li>)
 
     const main = (
-      <main style={mainStyles}>
-        <p>Prerequisite to get started with react.js:</p>
-        <ul>
-          <li>HTML</li>
-          <li>CSS</li>
-          <li>JavaScript</li>
-        </ul>
+      <main>
+        <div className="main-wrapper">
+          <p>Prerequisite to get started{' '}
+            <strong>
+              <em>react.js</em>
+            </strong>
+
+          </p>
+          <ul>
+            {techsFormatted}
+          </ul>
+          {result}
+          {personAge}
+        </div>
       </main>
     )
 
-    const footerStyles = {
-      backgroundColor: '#61DBFB',
-    }
+    const copyRight = 'Copyright 2023'
 
     const footer = (
-      <footer style={footerStyles}>
-        <p>Copyright 2023</p>
+      <footer>
+        <div className="footer-wrapper">
+          <p>{copyRight}</p>
+        </div>
       </footer>
     )
 
     const app = (
-      <div>
+      <div className="app">
         {header}
         {main}
         {footer}
